@@ -1,0 +1,45 @@
+\chapter{Introduction}\label{sec:intro}
+Introduction
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+            timeline/.style = {thick, -latex},
+            milestone/.style = {circle, fill = uioblack, inner sep = 2.5pt},
+            label/.style = {align = center, font = \sffamily\small}
+        ]
+        \draw[timeline] (0,0) -- (10,0);
+
+        \foreach \x/\year/\text in
+            {
+                0.5/2022/Project\\start,
+                3.2/2023/Data\\collection,
+                5.9/2024/Analysis,
+                8.6/2025/Papers\\submitted
+            }
+            {
+                \node[milestone] at (\x,0) {};
+                \draw (\x,0.12) -- (\x,0.7);
+                \node[label] at (\x,1.05) {\year};
+                \node[label] at (\x,-0.65) {\text};
+            }
+    \end{tikzpicture}
+    \caption{Project and publication timeline}
+    \label{fig:project-publication-timeline}
+\end{figure}
+
+\begin{table}[htbp]
+    \caption{Relationship between paper, research questions, and main contribution areas}
+    \label{tab:publications-rqs-contributions}
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        Paper     & Research question & Main contribution area              \\
+        \midrule
+        Paper I   & RQ1               & Study design and initial findings   \\
+        Paper II  & RQ2               & Systematic review and synthesis     \\
+        Paper III & RQ3               & Dataset construction and validation \\
+        Paper IV  & RQ4               & Evaluation and applied results      \\
+        \bottomrule
+    \end{tabular}
+\end{table}

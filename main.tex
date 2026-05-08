@@ -1,0 +1,168 @@
+% https://github.com/uio-latex/phduio-article-based
+
+% Add [final] to remove marginal notes,
+% remove [colophon] for a blank colophon page:
+\documentclass[final,american]{phduio}
+
+\usepackage{phdstyle}   % Custom style
+\usepackage[nohyperlinks]{acronym}
+
+\newcommand{\rqone}{Research question 1}
+\newcommand{\rqtwo}{Research question 2}
+\newcommand{\rqthree}{Research question 3}
+\newcommand{\rqfour}{Research question 4}
+\newcommand{\rqfive}{Research question 5}
+\newcommand{\rqsix}{Research question 6}
+\newcommand{\multicitespace}{\hspace{-0.275em}}
+
+\usepackage{notation}
+\usepackage{xparse}
+\ExplSyntaxOn
+\seq_new:N \l__lara_ccitep_seq
+
+\NewDocumentCommand{\multicitep}{m}
+ {
+  \seq_clear:N \l__lara_ccitep_seq
+  (
+  \clist_map_inline:nn { #1 }
+   {
+    \seq_put_right:Nn \l__lara_ccitep_seq { \citenop ##1 }
+   }
+  \seq_use:Nn \l__lara_ccitep_seq { ;~ }
+  )
+}
+
+\NewDocumentCommand{\citenop}{om}
+ {
+  \IfValueT{#1}{#1~}
+  \citeauthor{#2},\nobreakspace\citeyear{#2}
+ }
+\ExplSyntaxOff
+
+\author{First Last}
+\title{Thesis Title}
+% \subtitle{}
+\department{Department of Computer Science}
+\faculty{Faculty of Information Technology and Electrical Engineering}
+% \affiliation
+% {
+%     Optional Second Affiliation
+%     \and
+%    Optional Further Specification
+% }
+\ISSN{1234-5678}           % Request correct number from grafisksenter@ntnu.no
+\dissertationseries{1234}  % Request correct number from grafisksenter@ntnu.no
+
+
+\includeonly
+{
+    %sections/dedication,
+    sections/preface,
+    sections/abstract-en,
+    sections/abstract-no,
+    sections/papers,
+    sections/acronyms,
+    sections/overview/introduction,
+    sections/overview/results,
+    sections/overview/discussion,
+    sections/overview/conclusion,
+    sections/publications/paperI,
+    sections/publications/paperII,
+    sections/publications/paperIII,
+    sections/publications/paperIV,
+}
+
+
+\begin{document}
+
+\frontmatter        % Folios in Roman numerals, unnumbered chapters.
+
+% \uiotitle
+
+% \include{sections/dedication}
+\include{sections/abstract-en}
+\include{sections/abstract-no}
+\include{sections/preface}
+\include{sections/papers}
+\include{sections/acronyms}
+
+\cleartorecto
+\microtypesetup{protrusion = false}
+\tableofcontents    % Or \tableofcontents*
+\cleartorecto
+
+\newpage    %Add empty page
+\thispagestyle{empty}
+\mbox{}
+\newpage
+\newpage    %Add empty page
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+\setlength{\cftparskip}{1\baselineskip}
+\listoffigures      % Or \listoffigures*
+\cleartorecto
+
+\listoftables       % Or \listoftables*
+\cleartorecto
+\microtypesetup{protrusion = true}
+
+\mainmatter         % Folios in Arabic numerals, numbered chapters.
+
+\overviewpage       % Similar to \part*{Overview}, but appears in TOC
+
+\include{sections/overview/introduction}
+
+\newpage    %Add empty page
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+\include{sections/overview/results}
+
+\newpage    %Add empty page
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+\include{sections/overview/discussion}
+
+\newpage    %Add empty page
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+\include{sections/overview/conclusion}
+
+\newpage    %Add empty page
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+
+\printbibliography % Overview "Chapter" References
+
+\paper              % "Chapter" is renamed "Paper"
+\paperpage          % Similar to \part*{Papers}, but appears in TOC
+\numberofpapers{4}  % Specify size of thumb indices
+
+\include{sections/publications/paperI}
+\include{sections/publications/paperII}
+\include{sections/publications/paperIII}
+\include{sections/publications/paperIV}
+
+% \appendix           % "Chapter" is renamed "Appendix"
+% \appendixpage       % Similar to \part*{Appendices}, but appears in TOC
+
+% \include{sections/appendixA}
+% \include{sections/appendixB}
+
+
+
+\newpage    %Add empty page
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+\end{document}
