@@ -45,5 +45,8 @@ The generated thesis PDF is written to `main.pdf`.
 
 ## Preview
 
-The generated PDF from this template can be viewed here:
-![Snapshots 1](./main.pdf)
+The generated PDF from this template is available locally after compilation:
+
+[Open `main.pdf`](./main.pdf)
+
+GitHub Markdown cannot render a PDF.
